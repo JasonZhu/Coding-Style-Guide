@@ -109,9 +109,8 @@ var foo = "bar";
 /**
  *  Function Description
  * @param  {Object}   options
- * {
- *     key: type //required or optional
- * }
+ *  options:
+ *     key: type, required or optional, default, description
  * @param  {Function} callback [description]
  * @return {array}            [description]
  */
