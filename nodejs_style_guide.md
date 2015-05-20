@@ -7,11 +7,11 @@
 
 确保所有的命名都是有意义的,尽量避免用单字符变量和少见单词来命名。
 
-*. 文件和文件夹: 单词直接使用 _ (underscore)来分隔, 私有文件可以用_开头. child_process.js, _linklist.js
-*. 函数和变量：functionNamesLikeThis, variableNamesLikeThis,
-*. 类名和枚举类型：ClassNamesLikeThis, EnumNamesLikeThis,
-*. 类方法：methodNamesLikeThis
-*. 常量：SYMBOLIC_CONSTANTS_LIKE_THIS
+  * 文件和文件夹: 单词直接使用 _ (underscore)来分隔, 私有文件可以用_开头. child_process.js, _linklist.js
+  * 函数和变量：functionNamesLikeThis, variableNamesLikeThis,
+  * 类名和枚举类型：ClassNamesLikeThis, EnumNamesLikeThis,
+  * 类方法：methodNamesLikeThis
+  * 常量：SYMBOLIC_CONSTANTS_LIKE_THIS
 
 ## 文件编码
 
