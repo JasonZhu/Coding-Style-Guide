@@ -45,6 +45,18 @@ Sublime Text 2 设置(perfernces > Settings - User)：
   "default_line_ending": "unix"
 ```
 
+## JavaScript 使用严格模式
+
+```js
+"use strict"
+```
+
+或者
+
+```bash
+node --use_strict
+```
+
 ## 去除行末尾的多余空格
 
 就像吃完饭要刷牙一样，在提交 (commit) 代码之前你需要清理掉所有的不必要的空格。
