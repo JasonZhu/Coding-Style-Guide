@@ -102,15 +102,15 @@ var foo = "bar";
 
 ## 函数定义
 
-*. 同步函数:1个参数 options (object)
+ * 同步函数:1个参数 options (object)
 ```
 function funcName(options){
 ...
 }
 ```
 
+ * 异步函数: 2个参数 options (object), callback (function)
 
-*. 异步函数: 2个参数 options (object), callback (function)
 ```
 function funcName(options, callback){
 ...
