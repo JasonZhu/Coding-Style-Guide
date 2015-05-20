@@ -2,16 +2,16 @@
 
 ## 项目结构
 
-## 文件夹命名
 
-文件夹命名尽量采用名词单数形式. 如: `admin`, `lib`, `middleware`
-如果需要多个单词,采用驼峰方式命名. 如: `orderPlugin`
+## 命名规则
 
-## 文件命名
+确保所有的命名都是有意义的,尽量避免用单字符变量和少见单词来命名。
 
-文件命名尽量采用名词单数形式. 如: `admin`, `user`, `middleware`
-如果需要多个单词,采用驼峰方式命名. 如: `jsonHelper`
-如果是`class` 那么采用大驼峰命名. 如: `UserManager`, `UserDAO`
+*. 文件和文件夹: 单词直接使用 _ (underscore)来分隔, 私有文件可以用_开头. child_process.js, _linklist.js
+*. 函数和变量：functionNamesLikeThis, variableNamesLikeThis,
+*. 类名和枚举类型：ClassNamesLikeThis, EnumNamesLikeThis,
+*. 类方法：methodNamesLikeThis
+*. 常量：SYMBOLIC_CONSTANTS_LIKE_THIS
 
 ## 文件编码
 
@@ -23,7 +23,7 @@ Sublime Text 2 设置(perfernces > Settings - User)：
   "default_encoding": "UTF-8"
 ```
 
-## 2空格缩进
+## 代码缩进
 
 使用2个空格而不是 tab 来进行代码缩进，同时绝对不要混用空格和 tab 。
 
@@ -71,6 +71,7 @@ Sublime Text2 设置(perfernces > Settings - User)：
 
 每行结束必需使用分号。
 
+
 ## 每行80个字符
 
 限制你每行代码不超过80个字符。尽管现在的显示器越来越大，但是你的大脑并没有变大，并且你还可以把你的大显示器切分成多屏来显示。
@@ -101,10 +102,26 @@ var foo = "bar";
 
 ## 函数定义
 
-函数定义时的格式采用;
-1.  2个参数 options, callback
-2.  注释包含:  函数说明, 参数说明, 返回值说明
+*. 同步函数:1个参数 options (object)
+```
+function funcName(options){
+...
+}
+```
 
+
+*. 异步函数: 2个参数 options (object), callback (function)
+```
+function funcName(options, callback){
+...
+}
+```
+
+
+## 函数注释: [Google 的js 规范](http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Comments)
+
+ 注释包含:  函数说明, 参数说明, 返回值说明
+ 
 ```
 /**
  *  Function Description
@@ -124,71 +141,6 @@ function funcName(options, callback){
 保持你的函数尽可能的精简。逻辑尽量简单,并且是可复用的.
 不写大函数,尽量不要超过50行。
 
-## 变量、属性和函数名都采用小驼峰
-
-变量、属性和函数的命名风格都需要遵循小驼峰风格。
-同时所有的命名都是有意义的。
-尽量避免用单字符变量和少见单词来命名。
-
-*Right:*
-
-```js
-var adminUser = db.query('SELECT * FROM users ...');
-```
-
-*Wrong:*
-
-```js
-var admin_user = db.query('SELECT * FROM users ...');
-var a = db.query('SELECT * FROM users ...');
-```
-
-## 类名采用大驼峰
-
-类名都采用大驼峰风格来命名。
-
-*Right:*
-
-```js
-function BankAccount() {
-}
-```
-
-*Wrong:*
-
-```js
-function bank_Account() {
-}
-```
-
-## 用大写来标识常量
-
-常量变量和对象的静态常量属性都需要特殊表明，通过全部大写的方式来表明。
-
-尽管 Node.js / V8 支持 mozilla 的 [const][const] 关键字，
-但是不幸的是，对象的属性并不支持这个关键字，而且 const 没有包含于任何一个 ECMA 规范中。
-
-*Right:*
-
-```js
-var SECOND = 1 * 1000;
-
-function File() {
-}
-File.FULL_PERMISSIONS = 0777;
-```
-
-*Wrong:*
-
-```js
-const SECOND = 1 * 1000;
-
-function File() {
-}
-File.fullPermissions = 0777;
-```
-
-[const]: https://developer.mozilla.org/en/JavaScript/Reference/Statements/const
 
 
 ## 大括号位置
@@ -246,32 +198,33 @@ while (items.length) {
 }
 ```
 
+## 使用字面表达式，用 '{}' ,'[]' 代替 `new Array` ，`new Object`
 
-## 对象、数组的创建
+    不要使用 `string`，`bool`，`number` 的对象类型，即不要调用 `new String` ，`new Boolean` ，`new Number`
 
-使用尾随逗号，尽量用一行来声明，只有在编译器不接受的情况下才把对象的 key 用单引号包裹。
-使用字面表达式，用 `{}, []` 代替 `new Array, new Object`。
+## Object ，Array 创建，当有多个元素时，注意分行排列时逗号的位置
+  
+    *Right：*
 
-*Right:*
+    ```js
+    var a = ['hello', 'world'];
+    var b = {
+      good: 'code',
+      'is generally': 'pretty',
+    };
+    ```
+      
+    *Wrong:*
+    
+    ```js
+    var a = [
+      'hello', 'world'
+    ];
+    var b = {"good": 'code'
+      , is generally: 'pretty'
+    };
+    ```
 
-```js
-var a = ['hello', 'world'];
-var b = {
-  good: 'code',
-  'is-generally': 'pretty',
-};
-```
-
-*Wrong:*
-
-```js
-var a = [
-  'hello', 'world'
-];
-var b = {"good": 'code'
-        , is generally: 'pretty'
-        };
-```
 
 ## 使用 === 比较符
 
@@ -342,24 +295,15 @@ if (a.empty()) {
 }
 ```
 
-## 使用有意义的判断条件
+## 判断条件多的情况分行写
 
-所有复杂的条件判断都需要赋予一个有意义的名字或者方法。
-
-*Right:*
+提高代码可读性,同时便于排错
 
 ```js
-var isValidPassword = password.length >= 4 && /^(?=.*\d).{4,}$/.test(password);
-
-if (isValidPassword) {
-  console.log('winning');
-}
-```
-
-*Wrong:*
-
-```js
-if (password.length >= 4 && /^(?=.*\d).{4,}$/.test(password)) {
+if ( 
+  password.length >= 4 
+  && /^(?=.*\d).{4,}$/.test(password)
+) {
   console.log('losing');
 }
 ```
@@ -492,9 +436,11 @@ if (isSessionValid) {
 }
 ```
 
-## Object.freeze, Object.preventExtensions, Object.seal, with, eval
+## 避免使用 with, eval, Object.freeze, Object.preventExtensions, Object.seal
 
-这些函数不建议使用。
+## 不使用 ```const``` 关键字, 虽然V8 和 Mozilla 都支持它，但它不是ECMA 标准
+
+## for-in 循环，仅在 object/hash/map 时使用，绝不要对Array 使用
 
 ## Getters 和 Setters
 
@@ -553,6 +499,63 @@ var add=function(a,b){
   return a+b;
 }
 ```
+
+##不要把Array 当做关联数组或Object 使用,即你不应该用非数字作为Array 的索引
+        (Phper 尤其注意这点)  
+ *Right:*
+
+    ```js
+    var a = {};
+    a.hello = 'shit';
+    a.foo = 'bar';
+    ```
+
+  *Wrong :*
+  
+    ```js
+    var a = []; // use '{}' instead
+    a['hello'] = 'shit';
+    a['foo'] = 'bar';
+    ```
+    
+
+## 方法链 (Promise 风格)
+
+如果你使用方法链，确保每行只调用一个方法。
+同时你要合理使用缩进来表示他们的父对象是一致的。
+
+*Right:*
+
+```js
+User
+  .findOne({ name: 'foo' })
+  .populate('bar')
+  .exec(function(err, user) {
+    return true;
+  });
+```
+
+*Wrong:*
+
+```js
+User
+.findOne({ name: 'foo' })
+.populate('bar')
+.exec(function(err, user) {
+  return true;
+});
+
+User.findOne({ name: 'foo' }).populate('bar')
+.exec(function(err, user) {
+  return true;
+});
+
+User.findOne({ name: 'foo' }).populate('bar')
+  .exec(function(err, user) {
+    return true;
+});
+```
+
 
 ## 尽量参照 Node.js 源码的编码风格
 
