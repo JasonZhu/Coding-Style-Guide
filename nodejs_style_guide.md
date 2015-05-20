@@ -501,7 +501,7 @@ var add=function(a,b){
 ```
 
 ##不要把Array 当做关联数组或Object 使用,即你不应该用非数字作为Array 的索引
-        (Phper 尤其注意这点)  
+
  *Right:*
 
     ```js
