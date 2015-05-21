@@ -552,7 +552,7 @@ User.findOne({ name: 'foo' }).populate('bar')
 ## 尽量参照 Node.js 源码的编码风格
  
  * 多参考、模仿 Node 源码的编程风格 ^_^
- * [Felix's Node.js Style Guide](http://nodeguide.com/style.html)
+ * [Felix's Node.js Style Guide](https://github.com/felixge/node-style-guide)
  * [Google JavaScript Style Guide](https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
  * [node 源码](https://github.com/joyent/node)
  * [Javascript编程风格](http://www.ruanyifeng.com/blog/2012/04/javascript_programming_style.html)
