@@ -2,6 +2,7 @@
 
 ## 项目结构
 
+*后续补充*
 
 ## 命名规则
 
@@ -251,22 +252,14 @@ if (a == '') {
 
 [comparisonoperators]: https://developer.mozilla.org/en/JavaScript/Reference/Operators/Comparison_Operators
 
-## 三元操作符分多行
+## 过长的三元操作符分可以考虑写多行
 
-三元操作符不应该写在一行，将它分割到多行。
-
-*Right:*
+过长的三元操作符不应该写在一行，将它分割到多行, 提高可读性同时便于调试。
 
 ```js
 var foo = (a === b)
-  ? 1
-  : 2;
-```
-
-*Wrong:*
-
-```js
-var foo = (a === b) ? 1 : 2;
+  ? (...)
+  : (...);
 ```
 
 ## 不要扩展内建类型
@@ -307,7 +300,6 @@ if (
   console.log('losing');
 }
 ```
-
 
 
 ## 尽早的从函数中返回
@@ -436,11 +428,6 @@ if (isSessionValid) {
 }
 ```
 
-## 避免使用 with, eval, Object.freeze, Object.preventExtensions, Object.seal
-
-## 不使用 ```const``` 关键字, 虽然V8 和 Mozilla 都支持它，但它不是ECMA 标准
-
-## for-in 循环，仅在 object/hash/map 时使用，绝不要对Array 使用
 
 ## Getters 和 Setters
 
@@ -555,6 +542,11 @@ User.findOne({ name: 'foo' }).populate('bar')
     return true;
 });
 ```
+## 其他 Tips
+ * 避免使用 with, eval, Object.freeze, Object.preventExtensions, Object.seal 
+ * 不使用 ```const``` 关键字, 虽然V8 和 Mozilla 都支持它，但它不是ECMA 标准
+ * for-in 循环，仅在 object/hash/map 时使用，绝不要对Array 使用
+
 
 
 ## 尽量参照 Node.js 源码的编码风格
